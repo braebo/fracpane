@@ -4,7 +4,7 @@ This package isn't really intended for public use. But if you really want to, he
 
 ## Install
 
-`pnpm i -D fractalhq/fracpane`
+`pnpm i -D fracpane`
 
 <br>
 
