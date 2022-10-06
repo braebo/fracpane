@@ -14,10 +14,10 @@ This is how I use it in a `.svelte` file. Not ideal... but it works.
 
 ```svelte
 <script lang="ts">
+	import { fracpane, type Fracpane } from 'fracpane'
 	import { onMount, onDestroy } from 'svelte'
-	import { fracpane } from '$package'
 
-	let gui: Awaited<ReturnType<typeof fracpane>>
+	let gui: Fracpane
 
 	onMount(async () => {
 		gui = await fracpane()
@@ -65,20 +65,26 @@ resizerRight: {
 	destroy: () => void
 }
 
-resizeOptions: ResizeOptions {
+export interface ResizeOptions {
+	side?: 'left' | 'right' | 'top' | 'bottom'
+	/**
+	 * The starting width of the element.
+	 * @default 420
+	 */
+	initialWidth?: string
 	/**
 	 * The size of the resize handle in pixels.
 	 * @default '5px'
 	 */
 	gutterSize?: number | string
 	/**
-	 * Number of `vw` units (relative % of the viewport).
-	 * @default 15
+	 * The minimum size of the element in px.
+	 * @default 50
 	 */
 	minSize?: number
 	/**
-	 * Number of `vw` units (relative % of the viewport).
-	 * @default 75
+	 * The maximum size of the element in px.
+	 * @default 1000
 	 */
 	maxSize?: number
 	/**
