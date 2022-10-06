@@ -1,5 +1,5 @@
 {
-	"name": "fracpack",
+	"name": "@fractalhq/fracpane",
 	"version": "0.0.1",
 	"private": false,
 	"type": "module",
