@@ -11,6 +11,7 @@
 	<div class="left">
 		<a href="/">Demo</a>
 		<a href="/docs">Docs</a>
+		<a href="https://github.com/fractalhq/fracpane">Github</a>
 	</div>
 	<div class="right">
 		<ThemeToggle />
