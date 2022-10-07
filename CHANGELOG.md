@@ -1,5 +1,11 @@
 # @fractalhq/fracpane
 
+## 0.1.0
+
+### Minor Changes
+
+- [feat] smart snapping / window resize reactivity ([`5ffc76a`](https://github.com/FractalHQ/fracpane/commit/5ffc76aba1d54932935e946b2cf04c70c0c94976))
+
 ## 0.0.3
 
 ### Patch Changes
