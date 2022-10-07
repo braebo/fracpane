@@ -1,5 +1,11 @@
 # @fractalhq/fracpane
 
+## 0.1.1
+
+### Patch Changes
+
+- [fix] dist ([`12febe5`](https://github.com/FractalHQ/fracpane/commit/12febe5aae5f2d8d49c17c8851421b6549caab2a))
+
 ## 0.1.0
 
 ### Minor Changes
