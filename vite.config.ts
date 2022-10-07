@@ -5,6 +5,9 @@ const config = defineConfig({
 	plugins: [sveltekit()],
 	server: {
 		port: 3333,
+		fs: {
+			allow: ['./dist'],
+		},
 	},
 })
 
