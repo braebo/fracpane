@@ -1,5 +1,11 @@
 # @fractalhq/fracpane
 
+## 0.1.3
+
+### Patch Changes
+
+- [fix] move peers to deps ([`9d7eb0c`](https://github.com/FractalHQ/fracpane/commit/9d7eb0cd9b2d20495718e1ade3e5c48859073e42))
+
 ## 0.1.2
 
 ### Patch Changes
