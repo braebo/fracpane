@@ -1,0 +1,5 @@
+---
+'fracpane': patch
+---
+
+[fix] dist
