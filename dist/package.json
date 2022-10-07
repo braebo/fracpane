@@ -1,6 +1,6 @@
 {
   "name": "fracpane",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "type": "module",
   "exports": {
@@ -12,23 +12,22 @@
   "files": [
     "dist"
   ],
-  "peerDependencies": {
-    "@nanostores/persistent": "^0.7.0",
+  "dependencies": {
     "@neodrag/svelte": "^1.2.3",
     "@neodrag/vanilla": "^1.0.1",
-    "nanostores": "^0.7.0"
+    "@nanostores/persistent": "^0.7.0",
+    "@tweakpane/plugin-essentials": "^0.1.5",
+    "nanostores": "^0.7.0",
+    "rxjs": "^7.5.7",
+    "tweakpane": "^3.1.0"
   },
   "devDependencies": {
     "@changesets/cli": "^2.25.0",
-    "@nanostores/persistent": "^0.7.0",
-    "@neodrag/svelte": "^1.2.3",
-    "@neodrag/vanilla": "^1.0.1",
     "@sveltejs/adapter-auto": "1.0.0-next.80",
     "@sveltejs/kit": "1.0.0-next.511",
     "@sveltejs/package": "1.0.0-next.5",
     "@svitejs/changesets-changelog-github-compact": "^0.1.1",
     "@tweakpane/core": "^1.1.0",
-    "@tweakpane/plugin-essentials": "^0.1.5",
     "@types/node": "^18.8.3",
     "@types/postcss-preset-env": "^7.7.0",
     "@types/prismjs": "^1.26.0",
@@ -41,12 +40,11 @@
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-svelte3": "^4.0.0",
+    "fracpane": "^0.1.2",
     "fractils": "^3.0.2",
-    "fracpane": "link:./dist",
     "greset": "^2.0.0",
     "mdsvex": "^0.10.6",
     "nanoid": "^4.0.0",
-    "nanostores": "^0.7.0",
     "nodemon": "^2.0.20",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.17",
@@ -59,14 +57,12 @@
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.0.1",
     "remark-abbr": "^1.4.1",
-    "rxjs": "^7.5.7",
     "sass": "^1.55.0",
     "svelte": "^3.50.1",
     "svelte-check": "^2.9.1",
     "svelte-preprocess": "^4.10.7",
     "svelte2tsx": "^0.5.19",
     "tslib": "^2.4.0",
-    "tweakpane": "^3.1.0",
     "typedoc": "^0.23.15",
     "typescript": "^4.8.4",
     "vite": "^3.1.6",

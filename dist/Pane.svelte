@@ -2,8 +2,8 @@
 	@component - A themed tweakpane gui with drag and drop support.
 	@prop {string} [title] - The title of the gui.
  -->
- <script>import * as EssentialsPlugin from '@tweakpane/plugin-essentials';
-import { resize } from './utils/resizable';
+<script>import { resize } from './utils/resizable.js';
+import * as EssentialsPlugin from '@tweakpane/plugin-essentials';
 import { draggable } from '@neodrag/svelte';
 import { onMount, onDestroy } from 'svelte';
 import { Pane } from 'tweakpane';
@@ -18,7 +18,7 @@ let element;
 export let pane = new Pane({
     title,
     container,
-    expanded: true
+    expanded: true,
 });
 pane.registerPlugin(EssentialsPlugin);
 // Set default positions if none are specified.
@@ -43,7 +43,7 @@ export const dragOptions = {
                 dragging = false;
             }, 500);
         }
-    }
+    },
 };
 export const resizeOptions = {};
 onMount(() => {

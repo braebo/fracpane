@@ -5,7 +5,7 @@
 		"sourceMap": true,
 		"target": "ESNext",
 		"module": "ESNext",
-		"moduleResolution": "node",
+		"moduleResolution": "NodeNext",
 		"allowJs": false,
 		"checkJs": false,
 		"skipLibCheck": true,
@@ -14,9 +14,21 @@
 		"allowSyntheticDefaultImports": true,
 		"resolveJsonModule": true,
 		"noEmit": true,
-		"types": ["node"],
+		"types": ["node", "vite/client"],
 		"isolatedModules": true
 	},
-	"include": ["src/**/**/**/*.ts", "src/**/*.svelte", "src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/*.d.ts"],
-	"exclude": ["mdsvex.config.js", "node_modules/*", ".vercel/*", "build/*", "dist/*"]
+	"include": [
+		"ambient.d.ts",
+		"./vite.config.ts",
+		"./src/**/*.js",
+		"./src/**/*.ts",
+		"./src/**/*.svelte",
+		"./src/**/*.js",
+		"./src/**/*.ts",
+		"./src/**/*.svelte",
+		"./tests/**/*.js",
+		"./tests/**/*.ts",
+		"./tests/**/*.svelte"
+	],
+	"exclude": ["./node_modules/**", "./[!ambient.d.ts]**"]
 }
