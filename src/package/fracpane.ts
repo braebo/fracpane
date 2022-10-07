@@ -70,6 +70,9 @@ export class Fracpane {
 		initialWidth: this.width + 'px',
 	}
 
+	windowWidth = 0
+	windowHeight = 0
+
 	disposing = false
 
 	constructor(public options: Partial<Fracpane>) {
@@ -100,6 +103,9 @@ export class Fracpane {
 	public async init() {
 		if (typeof window === 'undefined') return console.warn('skipping fracpane server-side')
 
+		this.windowWidth = window.innerWidth
+		this.windowHeight = window.innerHeight
+
 		const needsMounting = !this.container
 
 		this.container ??= document.createElement('div')
@@ -113,6 +119,7 @@ export class Fracpane {
 		// Update the position from localstorage if it exists
 		if (this.persistent) this.dragOptions.position = this.position
 		this.dragInstance = new Draggable(this.container, dragOptions)
+		console.log(this.dragInstance)
 
 		this.resizerLeft = resize(this.container, {
 			id: this.id,
@@ -173,7 +180,6 @@ export class Fracpane {
 
 		if (needsMounting) document.body.appendChild(this.container)
 
-		window.addEventListener('beforeunload', this.maybeDispose)
 		// MutationRecord.removedNodes
 		const onDestroy: MutationCallback = (mutationList, observer) => {
 			mutationList.forEach((mutation) => {
@@ -192,10 +198,20 @@ export class Fracpane {
 		observer.observe(document.body, { childList: true })
 
 		this.dragInstance?.updateOptions({ position: this.position })
+
+		window.addEventListener('beforeunload', this.maybeDispose)
+		window.addEventListener('resize', this.onWindowResize)
+
+		this.onWindowResize()
+
+		return this
 	}
 
 	dispose() {
 		this.disposing = true
+		console.log('disposing', this.id)
+		window.removeEventListener('beforeunload', this.maybeDispose)
+		window.removeEventListener('resize', this.onWindowResize)
 		this.resizerLeft?.destroy()
 		this.resizerRight?.destroy()
 		this.dragInstance?.destroy()
@@ -203,10 +219,9 @@ export class Fracpane {
 		this.element?.remove()
 		this.container?.remove()
 		Fracpane.instances--
-		window.removeEventListener('beforeunload', this.maybeDispose)
 	}
 
-	maybeDispose() {
+	maybeDispose = () => {
 		if (this.disposing) return
 		this.dispose()
 	}
@@ -217,10 +232,59 @@ export class Fracpane {
 		styleTag.innerHTML = await styles['./styles.css']()
 		document.head.appendChild(styleTag)
 	}
+
+	onWindowResize = () => {
+		if (this.dragInstance) {
+			const lastWindowWidth = this.windowWidth
+			const lastWindowHeight = this.windowHeight
+			const currentWindowWidth = window.innerWidth
+			const currentWindowHeight = window.innerHeight
+			const currentWidth = this.container?.clientWidth ?? this.minSize
+			const currentHeight = this.container?.clientHeight ?? this.minSize
+			const { x, y } = this.dragInstance.options.position ?? { x: 0, y: 0 }
+
+			// Find the ratio between the last window size and the current window size
+			const widthRatio = currentWindowWidth / lastWindowWidth
+			const heightRatio = currentWindowHeight / lastWindowHeight
+
+			// Multiply the current position by the ratio to get the new position
+			let newX = x * widthRatio
+			let newY = y * heightRatio
+
+			// Keep the container locked to the edge if it's placed close to the edge
+			// On the left
+			const lockThreshold = 50
+			if (x < lockThreshold) newX = x
+			if (y < lockThreshold) newY = y
+			// On the right
+			if (x > lastWindowWidth - currentWidth - lockThreshold) {
+				// Stay locked to the right, but maintain the current distance from the right edge
+				const distanceFromRightEdge = lastWindowWidth - x - currentWidth
+				newX = currentWindowWidth - distanceFromRightEdge - currentWidth
+			}
+			if (y > lastWindowHeight - currentHeight - lockThreshold) {
+				newY = currentWindowHeight - currentHeight
+			}
+
+			// If the new position is outside the window, move it to the edge
+			if (newX > currentWindowWidth - currentWidth) {
+				newX = currentWindowWidth - currentWidth
+			}
+			if (newY > currentWindowHeight - currentHeight) {
+				// If the new position is outside the window, move the bottom of the container to the bottom of the window
+				newY = currentWindowHeight - currentHeight
+			}
+
+			// Update the position
+			this.dragInstance.updateOptions({ position: { x: newX, y: newY } })
+
+			// Update the window size
+			this.windowWidth = currentWindowWidth
+			this.windowHeight = currentWindowHeight
+		}
+	}
 }
 
 export const fracpane = async (options?: Partial<Fracpane>): Promise<Fracpane> => {
-	const fracpane = new Fracpane(options ?? {})
-	await fracpane.init()
-	return fracpane
+	return (await new Fracpane(options ?? {}).init()) as Fracpane
 }
