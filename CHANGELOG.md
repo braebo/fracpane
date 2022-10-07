@@ -1,5 +1,11 @@
 # @fractalhq/fracpane
 
+## 0.1.2
+
+### Patch Changes
+
+- [fix] peer deps ([`86834a2`](https://github.com/FractalHQ/fracpane/commit/86834a2fa18b04fa0d590351101171db7de8e010))
+
 ## 0.1.1
 
 ### Patch Changes
