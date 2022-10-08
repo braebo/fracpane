@@ -1,6 +1,6 @@
 {
   "name": "fracpane",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": false,
   "type": "module",
   "exports": {
@@ -13,9 +13,9 @@
     "dist"
   ],
   "dependencies": {
+    "@nanostores/persistent": "^0.7.0",
     "@neodrag/svelte": "^1.2.3",
     "@neodrag/vanilla": "^1.0.1",
-    "@nanostores/persistent": "^0.7.0",
     "@tweakpane/plugin-essentials": "^0.1.5",
     "nanostores": "^0.7.0",
     "rxjs": "^7.5.7",
