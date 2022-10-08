@@ -1,5 +1,0 @@
----
-'fracpane': patch
----
-
-[fix] deps

@@ -1,5 +1,11 @@
 # @fractalhq/fracpane
 
+## 0.1.4
+
+### Patch Changes
+
+- [fix] deps ([`4213e82`](https://github.com/FractalHQ/fracpane/commit/4213e82afbbd490380671ce6d0aadf121ba46146))
+
 ## 0.1.3
 
 ### Patch Changes
