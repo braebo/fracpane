@@ -1,5 +1,11 @@
 # @fractalhq/fracpane
 
+## 0.2.0
+
+### Minor Changes
+
+- [feat] export svelte component ([`8052e6b`](https://github.com/FractalHQ/fracpane/commit/8052e6be1bfc42abe71a25c1edf5e6ae45d980c9))
+
 ## 0.1.5
 
 ### Patch Changes
