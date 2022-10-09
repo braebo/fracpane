@@ -1,5 +1,11 @@
 # @fractalhq/fracpane
 
+## 0.2.1
+
+### Patch Changes
+
+- [fix] types / id parsing / docs ([`646b692`](https://github.com/FractalHQ/fracpane/commit/646b692fda83e4bf9e43f7ed33958076965c0be6))
+
 ## 0.2.0
 
 ### Minor Changes
