@@ -23,7 +23,6 @@ specifiers:
   eslint: ^8.24.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-svelte3: ^4.0.0
-  fracpane: ^0.1.2
   fractils: ^3.0.2
   greset: ^2.0.0
   mdsvex: ^0.10.6
@@ -82,7 +81,6 @@ devDependencies:
   eslint: 8.24.0
   eslint-config-prettier: 8.5.0_eslint@8.24.0
   eslint-plugin-svelte3: 4.0.0_snydkosur25h6rjxszquwacaua
-  fracpane: 0.1.2_37yt4gow3qbxlf4ghr2qsch7g4
   fractils: 3.0.2
   greset: 2.0.0
   mdsvex: 0.10.6_svelte@3.50.1
@@ -637,12 +635,15 @@ packages:
       nanostores: ^0.7.0
     dependencies:
       nanostores: 0.7.0
+    dev: false
 
   /@neodrag/svelte/1.2.3:
     resolution: {integrity: sha512-+OMidMflSWLxPq0m0xyEozaqq5MPzFukZo6cEx4Hp/inHmuHjbDMfUkGDd/g+MpVFgzkqPDGrTS6JnXVGA2d9Q==}
+    dev: false
 
   /@neodrag/vanilla/1.0.1:
     resolution: {integrity: sha512-v5YOQJic50IWsfMdDxz1rSCGpv7xE429IaoTK/9gNSVCy/8md7mB+8LVZLxiOtd0rhqt/H9caNYbQM9wBx6GFg==}
+    dev: false
 
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2462,21 +2463,6 @@ packages:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
     dev: true
 
-  /fracpane/0.1.2_37yt4gow3qbxlf4ghr2qsch7g4:
-    resolution: {integrity: sha512-82y8P547MHEDzpb7SiGQJYn92wwA+JR44uMCh2vYiE5l+/pA3yJo8Me+Say5/qrFn3EvTWRfoIxKRmN4yalOcw==}
-    engines: {node: '>= 16', npm: 'forbidden, use pnpm', pnpm: ^7.0.0}
-    peerDependencies:
-      '@nanostores/persistent': ^0.7.0
-      '@neodrag/svelte': ^1.2.3
-      '@neodrag/vanilla': ^1.0.1
-      nanostores: ^0.7.0
-    dependencies:
-      '@nanostores/persistent': 0.7.0_nanostores@0.7.0
-      '@neodrag/svelte': 1.2.3
-      '@neodrag/vanilla': 1.0.1
-      nanostores: 0.7.0
-    dev: true
-
   /fractils/3.0.2:
     resolution: {integrity: sha512-CnaRyH7Anq9ivRIWFeFGYNgilLZki0s4AsAFpOBuA2ChIz86ORUt7WrIORs3wywSwnWSSf+padRXOhz9lTBu3Q==}
     dev: true
@@ -3504,6 +3490,7 @@ packages:
   /nanostores/0.7.0:
     resolution: {integrity: sha512-y+ma9MVXuPzXKEXaRYW/iL/xG/HtMwB8fmFcMfUqt5fCNR/na2kDubbZGV4furUMTgmxfySJs0cQjORWhaPDyA==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
+    dev: false
 
   /natural-compare/1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
