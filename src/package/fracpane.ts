@@ -4,6 +4,7 @@ import type { Pane } from 'tweakpane'
 import { Draggable, type DragOptions } from '@neodrag/vanilla'
 import { resize, type ResizeOptions } from './utils/resizable'
 import { persistentAtom } from '@nanostores/persistent'
+import { log } from 'fractils'
 
 export type Position = {
 	x: number
@@ -119,7 +120,6 @@ export class Fracpane {
 		// Update the position from localstorage if it exists
 		if (this.persistent) this.dragOptions.position = this.position
 		this.dragInstance = new Draggable(this.container, dragOptions)
-		console.log(this.dragInstance)
 
 		this.resizerLeft = resize(this.container, {
 			id: this.id,
@@ -140,7 +140,6 @@ export class Fracpane {
 
 		let updatePositionTimer: NodeJS.Timeout
 		this.resizerLeft.onResize.subscribe(({ delta, direction }) => {
-			// console.log('resize', delta, direction)
 			if (this.dragInstance) {
 				const currentPosition = {
 					x: this.dragInstance.options.position?.x ?? 0,
@@ -209,7 +208,7 @@ export class Fracpane {
 
 	dispose() {
 		this.disposing = true
-		console.log('disposing', this.id)
+		log('disposing', this.id, 'sandybrown')
 		window.removeEventListener('beforeunload', this.maybeDispose)
 		window.removeEventListener('resize', this.onWindowResize)
 		this.resizerLeft?.destroy()

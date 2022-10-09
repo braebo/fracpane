@@ -1,7 +1,15 @@
-<script>
-	import Pane from "./Pane.svelte"
-</script>
+<script lang="ts">
+	import { fracpane as fp } from './fracpane.js'
+	import { onMount, onDestroy } from 'svelte'
 
-{#if typeof window !== 'undefined'}
-	<Pane  />
-{/if}
+	export let fracpane: Awaited<ReturnType<typeof fp>>
+	export let title = 'fracpane'
+
+	onMount(async () => {
+		fracpane = await fp({ title })
+	})
+
+	onDestroy(() => {
+		fracpane?.dispose()
+	})
+</script>
