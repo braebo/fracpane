@@ -1,8 +1,15 @@
 <br>
 
-This package isn't really intended for public use. But if you really want to, here is some info:
+This package isn't really intended for public use. But if you really want to, here is some info.
 
-## Install
+It wraps [tweakpane](https://cocopon.github.io) and adds:
+
+- draging
+- resizing
+- [custom theme](/src/package/styles.css)
+- persistent size / position
+
+## Installing
 
 `pnpm i -D fracpane`
 
@@ -10,19 +17,37 @@ This package isn't really intended for public use. But if you really want to, he
 
 ## Example
 
-This is how I use it in a `.svelte` file. Not ideal... but it works.
+Make a new gui:
+
+```svelte
+<script lang="ts">
+	import { fracpane } from 'fracpane'
+
+	const gui = await fracpane({ title: controls })
+</script>
+```
+
+Svelte component version:
+
+```svelte
+<script>
+	import { Fracpane } from 'fracpane'
+</script>
+
+<Fracpane title="controls" />
+```
+
+Which is really [just this](/src/package/Fracpane.svelte):
 
 ```svelte
 <script lang="ts">
 	import { fracpane, type Fracpane } from 'fracpane'
 	import { onMount, onDestroy } from 'svelte'
 
-	let gui: Fracpane
+	let gui: Awaited<Fracpane>
 
 	onMount(async () => {
-		gui = await fracpane()
-
-		const pane = gui.pane
+		gui = await fp({ title: 'controls' })
 	})
 
 	onDestroy(() => {
@@ -65,7 +90,7 @@ resizerRight: {
 	destroy: () => void
 }
 
-export interface ResizeOptions {
+resizeOptions {
 	side?: 'left' | 'right' | 'top' | 'bottom'
 	/**
 	 * The starting width of the element.
@@ -111,5 +136,7 @@ export interface ResizeOptions {
 ```
 
 <br>
-<br>
-<br>
+
+## Known Isuues
+
+- If `fracpane.dispose()` isn't fired during HMR, duplicates with incremented id's can pile up in local storage. You should check your localStorage periodically to make sure this isn't happening and / or remove them.
