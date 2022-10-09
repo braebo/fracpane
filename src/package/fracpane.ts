@@ -80,15 +80,15 @@ export class Fracpane {
 		Object.assign(this, options)
 
 		if (!Fracpane.stylesAdded) {
-			Fracpane.stylesAdded = true
 			this.addStyles()
+			Fracpane.stylesAdded = true
 		}
 
 		Fracpane.instances++
 
 		if (!options.title && Fracpane.instances > 1) this.title += `_${Fracpane.instances}`
 
-		this.id = `fracpane_${Fracpane.instances}_${this.title}`
+		this.id = `fracpane_${Fracpane.instances}_${this.title.trim().replace(/\s/g, '_')}`
 
 		this.position ??= { x: 10, y: 10 }
 

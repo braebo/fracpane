@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { fracpane as fp } from './fracpane.js'
+	import { fracpane as fp, type Fracpane } from './fracpane.js'
 	import { onMount, onDestroy } from 'svelte'
 
-	export let fracpane: Awaited<ReturnType<typeof fp>>
+	export let fracpane: Awaited<Fracpane>
 	export let title = 'fracpane'
 
 	onMount(async () => {
