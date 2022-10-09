@@ -1,5 +1,11 @@
 # @fractalhq/fracpane
 
+## 0.1.5
+
+### Patch Changes
+
+- [fix] changeset bug ([`bd5fcb5`](https://github.com/FractalHQ/fracpane/commit/bd5fcb500e87c940e757e07a2e339891fff97d25))
+
 ## 0.1.4
 
 ### Patch Changes
